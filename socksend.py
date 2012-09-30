@@ -23,7 +23,7 @@ def main():
     ADDR = (args['address'], 8000)
     BUFSIZE = 1024
     filename = args['file']
-    print "Sending file '%s' to '%s'" % (filename, sys.argv[1])
+    print "Sending file '%s' to '%s'" % (filename, args['address'])
     FILEINFO_SIZE = struct.calcsize('128s32sI8s')
     FILE_SIZE = os.stat(filename).st_size
 
