@@ -19,15 +19,11 @@ git clone https://github.com/zonyitoo/SendBySocket.git
 
 如果你是接收端，就运行`sockrecv.py`
 ```bash
-./sockrecv.py --iface=eth0
+./sockrecv.py --address=192.168.1.1
 ```
-参数`iface`是你的电脑的网络物理接口名，如`eth0`
+参数`address`是你的外网IP地址
 
-运行之后会显示
-
-> Your IP Address is 192.168.1.1
-
-那么你就知道你的IP地址了。不幸的是如果你在家用，有路由器，那么这个子网地址是不行的，去这个[地址](http://www.ip.cn/)看看你的外网IP是多少
+如果你在家用路由上网，那么去这个[地址](http://www.ip.cn/)看看你的外网IP是多少
 
 然后告诉那个发文件的人。
 

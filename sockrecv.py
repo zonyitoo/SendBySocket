@@ -6,7 +6,7 @@ import sys, argparse, fcntl
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Receive File via Socket', prog='Send By Socket')
-    parser.add_argument('-f', '--iface', help='Receive via this interface')
+    parser.add_argument('-a', '--address', help="Your IP Address")
     return parser.parse_args()
 
 def get_ip_address(s, ifname):
@@ -18,8 +18,8 @@ def get_ip_address(s, ifname):
 
 def main():
     args = vars(parse_arguments())
-    if not args['iface']:
-        print "You must specify an interface"
+    if not args['address']:
+        print "You must specify your address"
         exit(-1)
         
     recvSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,9 +27,7 @@ def main():
     BUFSIZE = 1024
     FILEINFO_SIZE = struct.calcsize('128s32sI8s')
 
-    ipaddr = get_ip_address(recvSock, args['iface'])
-    print "Your IP Address is ", ipaddr
-    ADDR = (ipaddr, 8000)
+    ADDR = (args['address'], 8000)
 
     recvSock.bind(ADDR)
     recvSock.listen(1)
